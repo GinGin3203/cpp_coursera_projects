@@ -7,7 +7,7 @@
 #include <iostream>
 #include <stdexcept>
 
-//#define TEST
+#define TEST
 using namespace std;
 
 

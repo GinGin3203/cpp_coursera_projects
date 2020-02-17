@@ -14,6 +14,10 @@ memory
 iostream
 -
 
+/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/database.cpp
+database.h
+/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/database.h
+
 /home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/database.h
 iostream
 -
@@ -21,7 +25,7 @@ string
 -
 set
 -
-stack
+algorithm
 -
 map
 -
@@ -63,6 +67,14 @@ date.h
 /home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/date.h
 memory
 -
+
+/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/test_runner.cpp
+test_runner.h
+/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/test_runner.h
+database.h
+/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/database.h
+condition_parser.h
+/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/condition_parser.h
 
 /home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/test_runner.h
 sstream

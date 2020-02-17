@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <set>
-#include <stack>
+#include <algorithm>
 #include <map>
 #include <sstream>
 #include "date.h"
@@ -21,74 +21,63 @@ public:
     int RemoveIf(const Func predicate);
 
     template<class Func>
-    vector<string> FindIf(const Func predicate);
+    vector<string> FindIf(const Func predicate) const;
 
-    string Last(const Date &date);
+    string Last(const Date &date) const;
 
 
 private:
     map<Date, set<string>> SetStorage;
     map<Date, vector<string>> VecStorage;
 
-    template<typename It, class Func>
-    int Delete(const Func predicate, It leftIter, const It rightIter);
 };
 
-template<class T>
-ostream &operator<<(ostream &stream, const vector<T> &storage) {
-    auto lastElem = end(storage);
-    lastElem--;
-    for (const auto &c: storage) {
-        if (c == *lastElem)
-            cout << c;
-        else
-            cout << c << " ";
-    }
-    return stream;
-}
+//template<class T>
+//ostream &operator<<(ostream &stream, const vector<T> &storage) {
+//    auto lastElem = end(storage);
+//    lastElem--;
+//    for (const auto &c: storage) {
+//        if (c == *lastElem)
+//            cout << c;
+//        else
+//            cout << c << " ";
+//    }
+//    return stream;
+//}
 
-template<typename It, class Func>
-int Database::Delete(const Func predicate, It leftIter, const It rightIter) {
-    int counter = 0;
-    while (leftIter != rightIter) {
-        auto ValueIter = begin(leftIter->second);
-        while (ValueIter != end(leftIter->second)) {
-            if (predicate(leftIter->first, *ValueIter)) {
-                ValueIter = leftIter->second.erase(ValueIter);
-                counter++;
-            } else
-                ValueIter++;
-        }
-        leftIter++;
-
-    }
-    return counter;
-}
 
 template<class Func>
 int Database::RemoveIf(const Func predicate) {
-    auto SetCounter = Delete(predicate, begin(SetStorage), end(SetStorage));
-    auto VecCounter = Delete(predicate, begin(VecStorage), end(VecStorage));
-    if (SetCounter != VecCounter)
-        throw logic_error("VecStorage and SetStorage should maintain the same number of elements");
+    int Counter = 0;
+    auto VecIt = begin(VecStorage);
+    while (VecIt != end(VecStorage)) {
+        auto date = VecIt->first;
+        auto prevSize = VecIt->second.size();
 
-    for (auto SetIt = begin(SetStorage); SetIt != end(SetStorage); SetIt++) {
-        if (SetIt->second.empty())
-            SetIt = SetStorage.erase(SetIt);
-    }
+        auto newEnd = stable_partition(begin(VecIt->second), end(VecIt->second),
+                                       [predicate, date](const string &s) {
+                                           return !predicate(date, s);
+                                       });
+        VecIt->second.erase(newEnd, VecIt->second.end());
+        auto newSize = VecIt->second.size();
+        Counter += (int) (prevSize - newSize);
 
-
-    for (auto VecIt = begin(VecStorage); VecIt != end(VecStorage); VecIt++) {
-        if (VecIt->second.empty())
+        if (VecIt->second.empty()) {
+            SetStorage.erase(VecIt->first);
             VecIt = VecStorage.erase(VecIt);
+        } else {
+            SetStorage[VecIt->first] = set<string>(begin(VecIt->second), end(VecIt->second));
+            VecIt++;
+        }
+
     }
-    return SetCounter;
+    return Counter;
 }
 
 template<class Func>
-vector<string> Database::FindIf(const Func predicate) {
+vector<string> Database::FindIf(const Func predicate) const {
     vector<string> QueryResult;
-    for (auto StorageIter = begin(SetStorage); StorageIter != end(SetStorage); StorageIter++)
+    for (auto StorageIter = begin(VecStorage); StorageIter != end(VecStorage); StorageIter++)
         for (auto ValueIter = begin(StorageIter->second); ValueIter != end(StorageIter->second); ValueIter++)
             if (predicate(StorageIter->first, *ValueIter)) {
                 ostringstream os;

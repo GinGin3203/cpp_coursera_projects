@@ -12,15 +12,15 @@ void Database::Print(ostream &os) const {
 }
 
 void Database::Add(const Date &date, const string &event) {
-    if (SetStorage[date].find(event) == SetStorage[date].end()) {
-        VecStorage[date].push_back(event);
-        SetStorage[date].insert(event);
+    auto curr_size = SetStorage[date].size();
+    SetStorage[date].insert(event);
 
-    }
+    if (curr_size != SetStorage[date].size())
+        VecStorage[date].push_back(event);
 }
 
 
-string Database::Last(const Date &date) {
+string Database::Last(const Date &date) const {
     auto lastIter = VecStorage.upper_bound(date);
     if (lastIter == begin(VecStorage)) {
         throw invalid_argument("No preceding date\n");
