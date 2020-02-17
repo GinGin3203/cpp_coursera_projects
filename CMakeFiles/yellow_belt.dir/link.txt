@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/yellow_belt.dir/rectangle.cpp.o  -o yellow_belt 

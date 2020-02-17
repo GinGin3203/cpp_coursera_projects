@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/primitive_database.cpp
+iomanip
+-
+iostream
+-
+map
+-
+set
+-
+sstream
+-
+stdexcept
+-
+string
+-
+vector
+-
+
