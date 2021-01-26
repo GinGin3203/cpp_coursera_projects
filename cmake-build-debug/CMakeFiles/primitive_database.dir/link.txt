@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/primitive_database.dir/primitive_database.cpp.o  -o primitive_database 

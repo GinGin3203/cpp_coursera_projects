@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/notifier.dir/notifier.cpp.o  -o notifier 

@@ -1,9 +1,0 @@
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/edit_cache.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/tmp.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/refactoring.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/inheritance.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/yellow_belt.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/notifier.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/rebuild_cache.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/shapes.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/CMakeFiles/test.dir

@@ -1,3 +1,0 @@
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/cmake-build-debug/CMakeFiles/database_task.dir
-/home/ginzburggeorgy/programming/c++_spec/yellow_belt/database_task/cmake-build-debug/CMakeFiles/edit_cache.dir
